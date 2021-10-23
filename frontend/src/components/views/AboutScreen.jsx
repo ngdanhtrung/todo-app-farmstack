@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Card, Avatar, Typography} from "antd";
+import { Row, Col, Card, Typography} from "antd";
 
 export const AboutScreen = () => {
   const { Text } = Typography;

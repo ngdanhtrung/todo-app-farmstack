@@ -6,22 +6,28 @@ import { Navbar } from "./components/Navbar";
 
 function App() {
   return (
-    <>
-        <Router>
-          <Navbar />
-          <Switch>
-            {Routes.map((item, index) => {
-              return (
-                <MyRoute
-                  key={index}
-                  path={item.path}
-                  component={item.component}
-                />
-              );
-            })}
-          </Switch>
-        </Router>
-    </>
+    <div
+      style={{
+        backgroundImage: `url("https://cdn.discordapp.com/attachments/845814665542893584/901387956563107860/background.jpg")`,
+        backgroundRepeat: 'repeat',
+        height:'1000px'
+      }}
+    >
+      <Router>
+        <Navbar />
+        <Switch>
+          {Routes.map((item, index) => {
+            return (
+              <MyRoute
+                key={index}
+                path={item.path}
+                component={item.component}
+              />
+            );
+          })}
+        </Switch>
+      </Router>
+    </div>
   );
 }
 

@@ -3,7 +3,7 @@ import "../../App.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { CheckCircleOutlined, MinusCircleOutlined } from "@ant-design/icons";
-import { Col, Row, Timeline, Card , Button, Input} from "antd";
+import { Col, Row, Timeline, Card, Button, Input, DatePicker} from "antd";
 import TodoView from "../TodoListView";
 
 export const TodoScreen = () => {
@@ -11,6 +11,7 @@ export const TodoScreen = () => {
   const [timeline, setTimeline] = useState([]);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const [date, setDate] = useState(null);
   const urlRequest = `${process.env.REACT_APP_API_KEY}todos`;
 
   const getTodoList = () => {
@@ -55,6 +56,7 @@ export const TodoScreen = () => {
       .post(urlRequest, {
         title: title,
         description: desc,
+        deadline:date._d.toDateString(),
       })
       .then((res) => console.log(res));
     getTodoList();
@@ -76,21 +78,24 @@ export const TodoScreen = () => {
           />
           <br />
           <br />
+          <DatePicker onChange={(event)=> setDate(event)} format='DD/MM/YYYY'/>
+          <br />
+          <br />
           <Button onClick={addTodoHandler} type='primary' shape='round'>
             Add Task
           </Button>
         </Card>
       </Col>
       <Col span={6} offset={1}>
-        <Card title='Your task'>
+        <Card title='Your task' style={{ height: 900, overflow: "auto" }}>
           <div>
             <TodoView todoList={todoList} getTodoList={getTodoList} />
           </div>
         </Card>
       </Col>
       <Col span={6} offset={1}>
-        <Card title='Time Line'>
-            <Timeline mode='alternate'>{timeline}</Timeline>
+        <Card title='Time Line' style={{ height: 900, overflow: "auto" }}>
+          <Timeline mode='alternate'>{timeline}</Timeline>
         </Card>
       </Col>
     </Row>

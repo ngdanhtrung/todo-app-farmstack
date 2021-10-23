@@ -8,6 +8,7 @@ class TodoModel(BaseModel):
     title: str = Field(...)
     description: str = Field(...)
     completed: bool = False
+    deadline: str
 
     class Config:
         allow_population_by_field_name = True
@@ -17,6 +18,7 @@ class TodoModel(BaseModel):
                 "title": "My important task",
                 "description" : "This is Description",
                 "completed": False,
+                "deadline": "2021-10-24T09:21:41.666Z"
             }
         }
 
@@ -32,5 +34,6 @@ class UpdateTodoModel(BaseModel):
                 "title": "My important task",
                 "description" : "This is Description",
                 "completed": True,
+                "deadline": "2021-10-24T09:21:41.666Z"
             }
         }

@@ -4,7 +4,7 @@ export const Routes = [
   {
     path: "/about",
     component: AboutScreen,
-    label: "About me",
+    label: "About Me",
   },
   {
     path: "/",
